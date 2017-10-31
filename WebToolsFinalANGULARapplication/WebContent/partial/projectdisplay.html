@@ -1,0 +1,18 @@
+<div class="page-header" ng-init="projectdisplayCtrl.init()">
+	<table>
+	
+	<div ng-show="authCtrl.error" align="center"
+				class="col-sm-offset-2 col-sm-2 alert alert-danger">{{projectdisplayCtrl.message}}</div>
+	<td>{{projectdisplayCtrl.message}}</td>
+		<tr ng-repeat="project in projectdisplayCtrl.projects ">
+			<td>{{project.projectName}}</td><br>
+			
+			<td><a
+				ng-click="projectdisplayCtrl.viewProject(project)"
+				class="btn btn-primary"> View</a></td>
+			<td><a
+				ng-click="projectdisplayCtrl.likeProject(project)"
+				class="btn btn-primary"> Like</a></td>
+		</tr>
+	</table>
+</div>

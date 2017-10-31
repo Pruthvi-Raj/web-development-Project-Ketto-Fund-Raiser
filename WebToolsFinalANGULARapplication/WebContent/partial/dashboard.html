@@ -1,0 +1,26 @@
+<div class="page-header" ng-init="dashboardCtrl.init()">
+	{{dashboardCtrl.messageDash}}
+	
+	<div ng-show="regCtrl.error" align="center"
+						class="col-sm-offset-2 col-sm-2 alert alert-danger">{{dashboardCtrl.message}}</div>
+		</div>
+	
+	
+
+	<table>
+		<tr ng-repeat="project in dashboardCtrl.projects">
+			<td>{{project.projectName}}</td>
+			<td>{{project.projectDescription}}
+			<td><a ng-click="dashboardCtrl.viewProject(project)"
+			 class="btn btn-primary"> View Project</a></td>
+			<td><a ng-click="dashboardCtrl.deleteProject(project)"
+			 class="btn btn-primary"> Delete</a></td>
+			<td><a ng-click="dashboardCtrl.payProject(project)"
+			 class="btn btn-primary"> view all payements</a></td>
+			 <td><a ng-click="dashboardCtrl.cityProject(project)"
+			 class="btn btn-primary"> view all cities</a></td>
+			  <td><a ng-click="dashboardCtrl.viewFunder(project)"
+			 class="btn btn-primary"> view all funders</a></td>
+		</tr>
+	</table>
+</div>

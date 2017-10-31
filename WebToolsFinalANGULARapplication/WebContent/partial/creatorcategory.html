@@ -1,0 +1,11 @@
+<div class="page-header" ng-init="creatorcategoryCtrl.init()">
+	
+
+  <table>
+		<tr ng-repeat="creatorcategory in creatorcategoryCtrl.categories">
+			<td>{{ creatorcategory.categoryName }}</td>
+			<td><a ng-click="creatorcategoryCtrl.viewCategory(creatorcategory)" 
+			class="btn btn-primary"> view category </a></td>
+		</tr>
+	</table>
+</div>

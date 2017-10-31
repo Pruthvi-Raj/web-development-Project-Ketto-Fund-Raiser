@@ -1,0 +1,15 @@
+<div class="page-header" >
+	<table>
+			<table>Project ID:- <span>{{project.projectId}}</span></br></table>
+			<table>Project Name:- <span>{{project.projectName}}</span><br></table>
+			<table>Project Description:- <span>{{project.projectDescription}}</span><br></table>
+			<table>Project Funding Expected:- <span>{{project.projectFundingExpectation}}</span></table>
+			<td><a
+				ng-click="generaleachCtrl.payProject(project)"
+				class="btn btn-primary"> Pay</a></td>
+			<td><a
+				ng-click="generaleachCtrl.serviceProject(project)"
+				class="btn btn-primary"> Service</a></td>
+		</tr>
+	</table>
+</div>

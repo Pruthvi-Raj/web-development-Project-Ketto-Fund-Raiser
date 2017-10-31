@@ -1,0 +1,58 @@
+<div class='container'>
+	<div class='panel panel-primary dialog-panel'>
+		<div class='panel-heading'>
+			<h5>Payement</h5>
+		</div>
+		<div class='panel-body'>
+			<form class='form-horizontal' role='form'>
+				<div class="form-group">
+
+					<div ng-show="payementCtrl.error" align="center"
+						class="col-sm-offset-2 col-sm-2 alert alert-danger">{{payementCtrl.message}}</div>
+
+				</div>
+				
+				
+				
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_amount'>Transaction Information</label>
+					<div class='col-md-6'>
+						<div class='form-group'>
+							<div class='col-md-11'>
+								<input class='form-control' id='id_amount' placeholder='$'
+									ng-model="payementCtrl.registration.amount" type="text" required>
+							</div>
+						</div>
+						<div class='form-group internal'>
+							<div class='col-md-11'>Name
+								<input class='form-control' id='id_name' 
+									placeholder='name' ng-model="payementCtrl.registration.name" type="text" required>
+							</div>
+						</div>
+						<div class='form-group internal'>
+							<div class='col-md-11'>City
+								<input class='form-control' id='id_city' 
+									placeholder='city' ng-model="payementCtrl.registration.city" type="text" required>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+
+				<div class='form-group'>
+					<div class='col-md-offset-4 col-md-3'>
+						<button class='btn btn-primary' ng-click="payementCtrl.payement()"
+							type='submit'>Payement</button>
+					</div>
+				</div>
+				<div>
+					<div class='col-md-3'>
+						<button class='btn btn-danger' ng-click="payementCtrl.cancel()"
+							style='float: right' type='submit'>Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<div class="page-header" ng-init="generalcategoryCtrl.init()">
+	
+
+  <table>
+		<tr ng-repeat="generalcategory in generalcategoryCtrl.categories">
+			<td>{{ generalcategory.categoryName }}</td>
+			<td><a ng-click="generalcategoryCtrl.viewCategory(generalcategory)" 
+			class="btn btn-primary"> view category </a></td>
+		</tr>
+	</table>
+</div>

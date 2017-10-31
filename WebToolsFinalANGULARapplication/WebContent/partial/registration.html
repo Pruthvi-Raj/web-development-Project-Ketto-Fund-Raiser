@@ -1,0 +1,152 @@
+
+
+<form ng-app="app"  name="myForm" novalidate>
+<div class='container'>
+	<div class='panel panel-primary dialog-panel'>
+		<div class='panel-heading'>
+			<h5>Registration</h5>
+		</div>
+		<div class='panel-body'>
+			<form class='form-horizontal' role='form'>
+				<div class="form-group">
+
+					<div ng-show="regCtrl.error" align="center"
+						class="col-sm-offset-2 col-sm-2 alert alert-danger">{{regCtrl.message}}</div>
+
+				</div>
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_title'>Name</label>
+					<div class='col-md-8'>
+						<div class='col-md-2'>
+							<div class='form-group internal'>
+								<select class='form-control' id='id_title'
+									ng-model="regCtrl.registration.title" required>
+									<option>Mr</option>
+									<option>Ms</option>
+									<option>Mrs</option>
+									<option>Miss</option>
+									<option>Dr</option>
+								</select>
+							</div>
+						</div>
+						<div class='col-md-3 indent-small'>
+							<div class='form-group internal'>
+								<input class='form-control' id='id_first_name'
+									ng-model="regCtrl.registration.firstName"
+									placeholder='First Name' type='text' required>
+							</div>
+						</div>
+						<div class='col-md-3 indent-small'>
+							<div class='form-group internal'>
+								<input class='form-control' id='id_last_name'
+									ng-model="regCtrl.registration.lastName"
+									placeholder='Last Name' type='text' required>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_email'>Username</label>
+					<div class='col-md-6'>
+						<div class='form-group'>
+							<div class='col-md-11'>
+								<input class='form-control' id='username'
+									placeholder='Username' ng-model="regCtrl.registration.username"
+									type='text' required>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_email'>Password</label>
+					<div class='col-md-6'>
+						<div class='form-group'>
+							<div class='col-md-11'>
+								<input class='form-control' id='id_password'
+									placeholder='Password' ng-model="regCtrl.registration.password"
+									type='password' required>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_email'>Contact</label>
+					<div class='col-md-6'>
+						<div class='form-group'>
+							<div class='col-md-11'>email
+								<input class='form-control' id='mail' placeholder='E-mail'
+									ng-model="regCtrl.registration.email" type="email" required>
+									<span style="color:red" ng-show="myForm.regCtrl.registration.email.$dirty && myForm.email.$invalid"></span>
+									<span ng-show="myForm.regCtrl.registration.email.$error.required">Email is required.</span>
+									<span ng-show="myForm.regCtrl.registration.email.$error.email">Invalid email address.</span>
+							</div>
+						</div>
+<!-- 						<p>Email:<br> -->
+<!-- 								<input type="email" name="email" ng-model="email" required> -->
+<!-- 								<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid"> -->
+<!-- 								<span ng-show="myForm.email.$error.required">Email is required.</span> -->
+<!-- 								<span ng-show="myForm.email.$error.email">Invalid email address.</span> -->
+<!-- 								</span> -->
+<!-- 					</p> -->
+						<div class='form-group internal'>
+							<div class='col-md-11'>Phone
+								<input class='form-control' id='phone'
+									placeholder='Phone: (xxx) - xxx xxxx' ng-model="regCtrl.registration.phone" type="tel" required>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_email'>Date of Birth</label>
+					<div class='col-md-6'>
+						<div class='form-group'>
+							<div class='col-md-11'>
+								<input class='form-control' id='id_dob' type="date"
+									ng-model="regCtrl.registration.dob" required>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_title'>Role</label>
+					<div class='col-md-8'>
+						<div class='col-md-2'>
+							<div class='form-group internal'>
+								<select class='form-control' id='id_role'
+									ng-model="regCtrl.registration.role" required>
+									<option>Creator</option>
+									<option>Funder</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='form-group'>
+					<div class='col-md-offset-4 col-md-3'>
+						<button class='btn btn-primary'  ng-click="regCtrl.register()"
+							type='submit'>Register</button>
+					</div>
+				</div>
+				<div>
+					<div class='col-md-3'>
+						<button class='btn btn-danger' ng-click="regCtrl.cancel()"
+							style='float: right' type='submit'>Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</form>
+
+
+
+
+

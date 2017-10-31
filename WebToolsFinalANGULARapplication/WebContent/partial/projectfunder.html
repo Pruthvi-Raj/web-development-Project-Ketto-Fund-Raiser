@@ -1,0 +1,17 @@
+<div class="page-header" >
+	<table>
+		<table>Project ID:- <span>{{project.projectId}}</span></br></table>
+		<table>Project Name:- <span>{{project.projectName}}</span><br></table>
+		<table>Project Description:- <span>{{project.projectDescription}}</span><br></table>
+		<table>Project Funding Expected:- <span>{{project.projectFundingExpectation}}</span></table>
+		<table>Project StartDate:- <span>{{project.projectStartDate}}</span></table>
+		<table>Project End Date:- <span>{{project.projectDeadLine}}</span></table>
+
+			<td><a
+				ng-click="projectFunderCtrl.payProject(project)"
+				class="btn btn-primary"> Pay</a></td>
+			<td><a
+				ng-click="projectFunderCtrl.serviceProject(project)"
+				class="btn btn-primary"> Service</a></td>
+	</table>
+</div>

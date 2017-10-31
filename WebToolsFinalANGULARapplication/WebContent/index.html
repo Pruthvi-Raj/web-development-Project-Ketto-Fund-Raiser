@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"	href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+<script	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="//code.angularjs.org/1.5.8/angular.js"></script>
+<script src="//code.angularjs.org/1.5.8/angular-route.js"></script>
+<script src="//code.angularjs.org/1.5.8/angular-cookies.js"></script>
+
+<script type="text/javascript" src="js/app.js"></script><!--  Registration Module -->
+<script type="text/javascript" src="js/app-router.js"></script><!--  Navigation and APP LEVEL config Module -->
+<script type="text/javascript" src="js/app-constants.js"></script><!--  Application Const. -->
+<script type="text/javascript" src="js/app-module.js"></script><!--  Application Module. -->
+
+
+<script type="text/javascript" src="js/module-auth.js"></script>
+<script type="text/javascript" src="js/module-home.js"></script>
+<script type="text/javascript" src="js/module-registration.js"></script>
+
+<script type="text/javascript" src="js/module-generalcategory.js"></script>
+<script type="text/javascript" src="js/module-generalproject.js"></script>
+<script type="text/javascript" src="js/module-generaleach.js"></script>
+<script type="text/javascript" src="js/module-dashboard.js"></script>
+<script type="text/javascript" src="js/module-personal.js"></script>
+<script type="text/javascript" src="js/module-category.js"></script>
+<script type="text/javascript" src="js/module-creatorcategory.js"></script>
+<script type="text/javascript" src="js/module-fundercategory.js"></script>
+<script type="text/javascript" src="js/module-project.js"></script>
+<script type="text/javascript" src="js/module-projectadd.js"></script>
+<script type="text/javascript" src="js/module-projectdisplay.js"></script>
+<script type="text/javascript" src="js/module-funderproject.js"></script>
+<script type="text/javascript" src="js/module-creatorProject.js"></script>
+<script type="text/javascript" src="js/module-creditCard.js"></script>
+<script type="text/javascript" src="js/module-payement.js"></script>
+<script type="text/javascript" src="js/module-allProjects.js"></script>
+<script type="text/javascript" src="js/module-addService.js"></script>
+<script type="text/javascript" src="js/module-cityKpi.js"></script>
+<script type="text/javascript" src="js/module-funderKpi.js"></script>
+
+</head>
+<body>
+	
+	<nav class="navbar navbar-default" ng-controller="applicationContoller"
+		ng-init="init()">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div class="navbar-brand">Charity Radius {{username}}</div>
+			</div>
+		
+				<!--  
+				
+			
+			<div id="merchantMenu">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#dashboard"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#skill"><i class="fa fa-shield"></i> About</a></li>
+					<li><a href="#personal"><i class="fa fa-comment"></i>Contact</a></li>
+														<li><a href="#aboutme"><i class="fa fa-comment"></i>About Me</a></li>
+					
+				</ul>
+			</div>
+			-->
+			<div id="admin">
+				<ul class="nav navbar-nav navbar-right">
+<!-- 					<li><a href="#dashboard"><i class="fa fa-home"></i> Status</a></li> -->
+					<li><a href="#category"><i class="fa fa-shield"></i> Category</a></li>
+					<li><a href="#allProjects"><i class="fa fa-shield"></i> Project</a></li>
+					<li><a href="#logout"><i class="fa fa-comment"></i>Logout</a></li>
+					
+				</ul>
+			</div>
+			<div id="creator">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#creatorcategory"><i class="fa fa-home"></i> Category</a></li>
+					<li><a href="#allProjects"><i class="fa fa-shield"></i> Project</a></li>
+					<li><a href="#logout"><i class="fa fa-comment"></i>Logout</a></li>
+					
+				</ul>
+			</div>
+			<div id="guest">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#/"><i class="fa fa-home"></i>Category</a></li>
+					<li><a href="#allProjects"><i class="fa fa-shield"></i> Project</a></li>
+				
+					<li><a href="#login"><i class="fa fa-comment"></i>Login</a></li>
+					<li><a href="#registration"><i class="fa fa-comment"></i>Register</a></li>
+					
+				</ul>
+			</div>
+			<div id="Funder">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#fundercategory"><i class="fa fa-home"></i>Category</a></li>
+										<li><a href="#allProjects"><i class="fa fa-shield"></i> Project</a></li>
+					<li><a href="#mymission"><i class="fa fa-comment"></i>My Mission</a></li>
+					<li><a href="#logout"><i class="fa fa-comment"></i>Logout</a></li>
+					
+				</ul>
+			</div>
+			
+		</div>
+	</nav>
+	<div class="jumbotron">
+		<div class="container-fluid">
+			<div class="col-xs-offset-2 col-xs-8">
+				<div ng-view></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

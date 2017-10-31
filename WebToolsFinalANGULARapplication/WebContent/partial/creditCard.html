@@ -1,0 +1,95 @@
+
+<div class='container'>
+	<div class='panel panel-primary dialog-panel'>
+		<div class='panel-heading'>
+			<h5>Card Registration</h5>
+		</div>
+		<div class='panel-body'>
+			<form class='form-horizontal' role='form'>
+				<div class="form-group">
+
+					<div ng-show="credCardCtrl.error" align="center"
+						class="col-sm-offset-2 col-sm-2 alert alert-danger">{{credCardCtrl.message}}</div>
+
+				</div>
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_title'>Card Type</label>
+					<div class='col-md-8'>
+						<div class='col-md-2'>
+							<div class='form-group internal'>
+								<select class='form-control' id='id_title'
+									ng-model="credCardCtrl.registration.type">
+									<option>Visa</option>
+									<option>Master</option>
+									<option>American Express</option>
+									<option>Maestro</option>
+									<option>Discover</option>
+								</select>
+							</div>
+						</div>
+						<div class='col-md-3 indent-small'>
+							<div class='form-group internal'>
+								<input class='form-control' id='id_first_name'
+									ng-model="credCardCtrl.registration.firstName"
+									placeholder='First Name' type='text'>
+							</div>
+						</div>
+						<div class='col-md-3 indent-small'>
+							<div class='form-group internal'>
+								<input class='form-control' id='id_last_name'
+									ng-model="credCardCtrl.registration.lastName"
+									placeholder='Last Name' type='text' required>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_email'>Card Number</label>
+					<div class='col-md-6'>
+						<div class='form-group'>
+							<div class='col-md-11'>
+								<input class='form-control' id='id_cardNumber' placeholder='card number'
+									ng-model="credCardCtrl.registration.cardNumber" type="text" required>
+							</div>
+						</div>
+						<div class='form-group internal'>
+							<div class='col-md-11'>cvv
+								<input class='form-control' id='id_cvv'
+									placeholder='cvv' ng-model="credCardCtrl.registration.cvv" type="text" required>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_email'>Date of exp</label>
+					<div class='col-md-6'>
+						<div class='form-group'>
+							<div class='col-md-11'>
+								<input class='form-control' id='id_dob' type="date"
+									ng-model="credCardCtrl.registration.dox" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='form-group'>
+					<div class='col-md-offset-4 col-md-3'>
+						<button class='btn btn-primary' ng-click="credCardCtrl.register()"
+							type='submit'>Make Payement</button>
+					</div>
+				</div>
+				<div>
+					<div class='col-md-3'>
+						<button class='btn btn-danger' ng-click="credCardCtrl.cancel()"
+							style='float: right' type='submit'>Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

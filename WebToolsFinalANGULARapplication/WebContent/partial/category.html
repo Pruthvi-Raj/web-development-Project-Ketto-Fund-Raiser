@@ -1,0 +1,57 @@
+<div class="page-header" ng-init="categoryCtrl.init()">
+
+	<table>
+	<tr>
+		<td>Category<input type="text" name="categoryname"
+			ng-model="categoryCtrl.category.categoryName"></td>
+		<td>Description<input type="text" name="categoryDesc"
+			ng-model="categoryCtrl.category.categoryDescription"></td>
+		
+		
+		<td><a
+			ng-click="categoryCtrl.addCategory()"
+			class="btn btn-primary"> ADD</a>
+		
+		
+		
+		</td> 
+			<td>{{categoryCtrl.message}}</td>
+		
+		</tr>
+		
+		<tr ng-repeat="category in categoryCtrl.categories">
+			<td>{{category.categoryId}}</td>
+			<td>{{category.categoryName}}</td>
+			<td>{{category.categoryDescription}}</td>
+			
+			
+
+
+			</script>
+			<div ng-show ="view">
+				<td><a ng-click="categoryCtrl.viewCategory(category)"
+					class="btn btn-primary"> view category </a>
+				</td>
+			</div>
+			<div ng-show = "disable">
+				<td><a
+					ng-click="categoryCtrl.disableCategory(category)"
+					class="btn btn-primary"> Disable</a>
+				</td>
+			</div>
+			<div ng-show = "enable">
+				<td><a
+					ng-click="categoryCtrl.enableCategory(category)"
+					class="btn btn-primary"> Enable</a>
+				</td>
+			</div>
+			<div id = "delete">
+				<td><a
+					ng-click="categoryCtrl.deleteCategory(category)"
+					class="btn btn-primary"> Delete</a>
+				</td>
+			</div>
+			
+		</tr>
+	</table>
+</div>

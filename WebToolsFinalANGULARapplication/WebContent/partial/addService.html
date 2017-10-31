@@ -1,0 +1,26 @@
+<div class="page-header" ng-init="addServiceCtrl.init()">
+
+  <table>
+  	<tr><td>From range:- <td><input type="text" name="from" ng-model="addServiceCtrl.service.from"></td></td></tr>
+	<tr><td>To Range:- <td><input type="text" name="to" ng-model="addServiceCtrl.service.to"></td></td></tr>
+	<tr><td>Gift:- <td><input type="text" name="gift" ng-model="addServiceCtrl.service.gift"></td></td></tr>
+		
+		
+		<tr><td><a ng-click="addServiceCtrl.addProject(project)"
+			class="btn btn-primary"> ADD Service</a></td></tr>
+		<div ng-show="regCtrl.error" align="center"
+						class="col-sm-offset-2 col-sm-2 alert alert-danger">{{addServiceCtrl.message}}</div>
+		</div>	
+	
+	
+	 <tr ng-repeat="service in addServiceCtrl.projects">
+		<td>{{service.returnId}}</td>
+		<td>{{service.from}}</td>
+		<td>{{service.to}}</td>
+		<td>{{service.gift}}</td>
+		<td><a ng-click="addServiceCtrl.viewProject(project)"
+		 class="btn btn-primary"> view</a></td>
+	</tr>
+	
+  </table>
+</div>

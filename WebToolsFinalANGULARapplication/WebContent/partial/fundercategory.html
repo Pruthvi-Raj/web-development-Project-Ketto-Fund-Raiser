@@ -1,0 +1,11 @@
+<div class="page-header" ng-init="fundercategoryCtrl.init()">
+	
+
+  <table>
+		<tr ng-repeat="fundercategory in fundercategoryCtrl.categories">
+			<td>{{ fundercategory.categoryName }}</td>
+			<td><a ng-click="fundercategoryCtrl.viewCategory(fundercategory)" 
+			class="btn btn-primary"> view category </a></td>
+		</tr>
+	</table>
+</div>

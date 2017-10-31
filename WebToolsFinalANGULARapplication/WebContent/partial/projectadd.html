@@ -1,0 +1,29 @@
+<div class="page-header" ng-init="projectaddCtrl.init()">
+
+  <table>
+  	<tr><td>Project<td><input type="text" name="projectname" ng-model="projectaddCtrl.project.projectName"></td></td></tr>
+	<tr><td>Description<td><input type="text" name="projectDescritpion" ng-model="projectaddCtrl.project.projectDescription"></td></td></tr>
+	<tr><td>Project Funding Amount<td><input type="text" name="projectFundingAmount" ng-model="projectaddCtrl.project.projectFundingAmount"></td></td></tr>
+	<tr><td>Project Start Date<td><input type="date" name="projectStartDate" ng-model="projectaddCtrl.project.projectStartDate"></td></td></tr>
+	<tr><td>Project Dead Line<td><input type="date" name="projectDeadLine" ng-model="projectaddCtrl.project.projectDeadLine"></td></td></tr>
+		
+		
+		<tr><td><a ng-click="projectaddCtrl.addProject(project)"
+			class="btn btn-primary"> ADD</a></td></tr>
+			<div ng-show="authCtrl.error" align="center"
+				class="col-sm-offset-2 col-sm-2 alert alert-danger">{{projectaddCtrl.message}}</div>
+			
+			
+	
+	
+	 <tr ng-repeat="project in projectaddCtrl.projects">
+		<td>{{project.projectName}}</td>
+		<td>{{project.projectDescription}}</td>
+		<td><a ng-click="projectaddCtrl.viewProject(project)"
+		 class="btn btn-primary"> view</a></td>
+		<td><a ng-click="projectaddCtrl.addService(project)"
+		 class="btn btn-primary"> add Service</a></td>
+	</tr>
+	
+  </table>
+</div>

@@ -1,0 +1,15 @@
+
+
+<div class="page-header" ng-init="homeCtrl.init()">
+	<table>
+		<tr ng-repeat="payement in homeCtrl.payements ">
+			<td>{{payement.payementId}}</td><br>
+			<td>Name {{payement.name}}</td><br>
+			<td>City {{payement.city}}</td><br>
+			<td>Amount:- {{payement.amount}}</td><br>
+<!-- 			<td><a -->
+<!-- 				ng-click="allProjCtrl.viewProject(project)" -->
+<!-- 				class="btn btn-primary"> View</a></td> -->
+		</tr>
+	</table>
+</div>
