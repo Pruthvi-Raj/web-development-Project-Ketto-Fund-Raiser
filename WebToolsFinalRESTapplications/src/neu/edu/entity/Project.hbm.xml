@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 26, 2017 11:58:46 PM by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.Project" table="project" catalog="mydb" optimistic-lock="version">
+        <id name="projectId" type="java.lang.Integer">
+            <column name="ProjectID" />
+            <generator class="identity" />
+        </id>
+        <property name="projectName" type="string">
+            <column name="ProjectName" length="100" />
+        </property>
+        <property name="projectDescription" type="string">
+            <column name="ProjectDescription" length="45" />
+        </property>
+        <property name="projectFundingExpectation" type="java.lang.Integer">
+            <column name="ProjectFundingExpectation" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="StartDate" length="10" />
+        </property>
+        <property name="deadLine" type="date">
+            <column name="DeadLine" length="10" />
+        </property>
+        <property name="creatorCreatorId" type="java.lang.Integer">
+            <column name="Creator_CreatorID" />
+        </property>
+        <property name="categoryCategoryId" type="java.lang.Integer">
+            <column name="Category_CategoryID" />
+        </property>
+        <property name="isDeleted" type="java.lang.Byte">
+            <column name="isDeleted" />
+        </property>
+        <set name="returns" table="return" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Project_ProjectID" />
+            </key>
+            <one-to-many class="neu.edu.entity.Return" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 26, 2017 11:58:46 PM by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.Category" table="category" catalog="mydb" optimistic-lock="version">
+        <id name="categoryId" type="java.lang.Integer">
+            <column name="CategoryID" />
+            <generator class="identity" />
+        </id>
+        <property name="categoryName" type="string">
+            <column name="CategoryName" length="45" not-null="true" />
+        </property>
+        <property name="categoryDescription" type="string">
+            <column name="CategoryDescription" length="45" />
+        </property>
+        <property name="isEnable" type="java.lang.Byte">
+            <column name="isEnable" />
+        </property>
+        <property name="isDeleted" type="java.lang.Byte">
+            <column name="isDeleted" />
+        </property>
+    </class>
+</hibernate-mapping>

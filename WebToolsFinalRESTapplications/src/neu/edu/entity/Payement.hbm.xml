@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 26, 2017 11:58:46 PM by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.Payement" table="payement" catalog="mydb" optimistic-lock="version">
+        <id name="payementId" type="java.lang.Integer">
+            <column name="PayementID" />
+            <generator class="identity" />
+        </id>
+        <property name="funderFunderId" type="int">
+            <column name="Funder_FunderID" not-null="true" />
+        </property>
+        <property name="projectProjectId" type="int">
+            <column name="Project_ProjectID" not-null="true" />
+        </property>
+        <property name="amount" type="int">
+            <column name="Amount" not-null="true" />
+        </property>
+        <property name="city" type="string">
+            <column name="City" length="45" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 26, 2017 11:58:46 PM by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.Creator" table="creator" catalog="mydb" optimistic-lock="version">
+        <id name="creatorId" type="java.lang.Integer">
+            <column name="CreatorID" />
+            <generator class="identity" />
+        </id>
+        <property name="creatorName" type="string">
+            <column name="CreatorName" length="100" not-null="true" />
+        </property>
+        <property name="userUserId" type="int">
+            <column name="User_UserID" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
