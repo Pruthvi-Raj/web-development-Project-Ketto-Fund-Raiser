@@ -160,7 +160,7 @@ dashboardModule.factory('dashboardService', function($http,$timeout,APP_CONSTANT
 		     					];
 		     	
 		
-		         callback(response);
+		     			callbackSuccess4(response);
 		     }, 1000);
 			}else{
 				
@@ -186,7 +186,7 @@ dashboardModule.factory('dashboardService', function($http,$timeout,APP_CONSTANT
 			     		var response;
 			     		
 			     			response = {message:'Category Deleted'};
-			        callbackSuccess2(response);
+			        callbackSuccess3(response);
 			     }, 1000);
 				}else{
 					 $http.put(APP_CONSTANT.REMOTE_HOST+'/user/project/delete/'+data1.projectId

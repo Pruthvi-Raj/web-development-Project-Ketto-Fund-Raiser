@@ -9,8 +9,8 @@ funderKpiModule.controller('kpiFunderController', function($location,$rootScope,
 
 	kpiFunderCtrl.registration = {
 		
-		name : "",
-		city : ""
+		Name : "",
+		City : ""
 		
 	};
 
@@ -62,19 +62,15 @@ funderKpiModule.factory('funderKpiService', function($rootScope, $http,
 			$timeout(function() {
 
 				var response;
-				if (data.username === 'test' && data.password === 'test') {
-					response = {
-						success : true,
-					};
+					response = [{
+						"Name" : "PRM",
+						"City" : "Hyderabad"
+					},
+					{
+						"Name" : "MURAMO GROUP",
+						"City"  : "Boston"
+					}];
 					callbackSuccess(response);
-				} else {
-					response = {
-						success: false,
-						message : 'Registration was not successful'
-					};
-					callbackError(response);
-				}
-
 			}, 1000);
 		} else {
 

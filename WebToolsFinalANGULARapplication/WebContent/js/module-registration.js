@@ -41,14 +41,15 @@ registrationModule.controller('registrationController', function($location,
 	regCtrl.error = false;
 	regCtrl.message = "";
 
-	var callbackSuccess = function(data, headers) { // Status
+	var callbackSuccess = function(data,headers) { // Status
 		// Code:200
+		console.log(data)
 		if (data.success) {
-			regCtrl.openComponentModal('Registration Successful');
+			//regCtrl.openComponentModal('Registration Successful');
 			
 			//regService
 			
-			$rootScope.message = data;
+			//$rootScope.message = data;
 			
 			$location.path('/login');
 

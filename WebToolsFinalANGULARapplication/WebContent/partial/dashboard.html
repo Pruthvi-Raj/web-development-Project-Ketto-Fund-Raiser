@@ -10,9 +10,10 @@
 	<table>
 		<tr ng-repeat="project in dashboardCtrl.projects">
 			<td>{{project.projectName}}</td>
-			<td>{{project.projectDescription}}
+			<td>{{project.projectDescription}}</td>
+			<td> </td></br>
 			<td><a ng-click="dashboardCtrl.viewProject(project)"
-			 class="btn btn-primary"> View Project</a></td>
+			 class="btn btn-primary"> View Project</a></td></br>
 			<td><a ng-click="dashboardCtrl.deleteProject(project)"
 			 class="btn btn-primary"> Delete</a></td>
 			<td><a ng-click="dashboardCtrl.payProject(project)"

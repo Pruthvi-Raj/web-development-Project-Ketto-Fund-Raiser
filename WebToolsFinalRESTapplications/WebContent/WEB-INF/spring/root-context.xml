@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- 1. Component Scan -->
-	<context:component-scan base-package="map" />
+	<context:component-scan base-package="neu.edu" />
 	<!-- 2. Annotation Scan -->
 	<context:annotation-config />
 

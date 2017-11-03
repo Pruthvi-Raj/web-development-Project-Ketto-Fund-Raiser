@@ -192,11 +192,12 @@ configModule.run(
 	            if ( 
 	            		!(
 	            				$location.path() == '/allProjects' || 
+	            				$location.path() == '/dashboard' ||
 	            				$location.path() == '/registration'|| 
 	            				$location.path() == '/login' ||
 	            				$location.path() == '/mymission'||
 	            				$location.path() == '/project/display'||
-	            				$location.path() == '/project/display'||
+	            				//$location.path() == '/project/display'||
 	            				$location.path() == '/project/general'||
 	            				$location.path() == '/project/each'
 	            		 ) && 

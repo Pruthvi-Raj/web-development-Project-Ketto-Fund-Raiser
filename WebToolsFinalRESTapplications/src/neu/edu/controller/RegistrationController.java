@@ -29,8 +29,8 @@ public class RegistrationController {
 	@Autowired
 	private RegisterService registerService;
 	
-	@Autowired
-	private UserService userService;
+	//@Autowired
+	//private UserService userService;
 	
 	@POST
 	@Path("/user")

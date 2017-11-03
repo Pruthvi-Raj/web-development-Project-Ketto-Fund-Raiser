@@ -12,7 +12,7 @@ angular.module('app')
 
 })
 .constant('APP_CONSTANT',{
-		DEMO:false,
+		DEMO:true,
 		
 		REMOTE_HOST:'http://localhost:8080/AnguarRESTApplication/rest'
 });

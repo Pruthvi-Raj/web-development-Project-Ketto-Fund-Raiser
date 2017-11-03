@@ -98,18 +98,17 @@ cityKpiModule.factory('kpiService', function($rootScope, $http,
 			$timeout(function() {
 
 				var response;
-				if (data.username === 'test' && data.password === 'test') {
-					response = {
-						success : true,
-					};
+				
+					response = [{
+						"city" : "Boston",
+						"name" : "Pruthvi"
+							},
+							{
+						"city" : "Houston",
+						"name" : "Chetan"
+					}];
 					callbackSuccess(response);
-				} else {
-					response = {
-						success: false,
-						message : 'Registration was not successful'
-					};
-					callbackError(response);
-				}
+				
 
 			}, 1000);
 		} else {

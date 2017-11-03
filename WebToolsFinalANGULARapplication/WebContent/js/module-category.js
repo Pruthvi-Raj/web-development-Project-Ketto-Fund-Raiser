@@ -77,16 +77,16 @@ categoryModule.controller('categoryContoller', function($scope,$rootScope,$locat
 			 
 	 categoryCtrl.enableCategory = function(row){
 		 	console.log(row);
-			categoryService.enableCategories($rootScope.userSession.id,row,callbackSuccess4, callbackError4);
+			categoryService.enableCategories($rootScope.userSession.id,row,callbackSuccessenable, callbackErrorenable);
 		}
-	     var callbackSuccess4 = function(data1) {
+	     var callbackSuccessenable = function(data1) {
 					console.log(data1);
 					//categoryCtrl.categories = data;
 					//categoryCtrl.openComponentModal('Registration Successful');
 					categoryCtrl.message="Category Enabled";
 		     };
 					
-	      var callbackError4 = function(data1) {
+	      var callbackErrorenable = function(data1) {
 					$scope.message = "Failed to Enabled, as it has projects";
 					categoryCtrl.message = "Failed to Enabled";
 			   		$scope.error = true;   
@@ -160,7 +160,7 @@ categoryModule.factory('categoryService', function($http,$timeout,APP_CONSTANT) 
 	};
 	
 	categoryService.addCategories = function(id,data, callbackSuccess1,callbackError1){
-		
+		console.log("service for add category is called");
 		if(APP_CONSTANT.DEMO){
 			$timeout(function(){
 		     		var response;
@@ -174,7 +174,7 @@ categoryModule.factory('categoryService', function($http,$timeout,APP_CONSTANT) 
 		     							"desc": null
 		     						}
 		     					];
-		         callbackSucces1(response);
+		         callbackSuccess1(response);
 		     }, 1000);
 			}else{
 				 $http.post(APP_CONSTANT.REMOTE_HOST+'/admin/category/add', {
@@ -193,13 +193,13 @@ categoryModule.factory('categoryService', function($http,$timeout,APP_CONSTANT) 
 		};
 	
      categoryService.disableCategories = function(id,data1, callbackSuccess2,callbackError2){
-    	 console.log("Reached delete service")
+    	 console.log("Reached disable service")
 			if(APP_CONSTANT.DEMO){
 				$timeout(function(){
 			         	
 			     		var response;
 			     		
-			     			response = {message:'Category Deleted'};
+			     			response = {message:'Category Disabled'};
 			        callbackSuccess2(response);
 			     }, 1000);
 				}else{
@@ -216,15 +216,15 @@ categoryModule.factory('categoryService', function($http,$timeout,APP_CONSTANT) 
 				}
 			};
 			
-	 categoryService.enableCategories = function(id,data1, callbackSuccess4,callbackError4){
+	 categoryService.enableCategories = function(id,data1, callbackSuccessenable,callbackErrorenable){
     	 console.log("Reached enable service")
 			if(APP_CONSTANT.DEMO){
 				$timeout(function(){
 			         	
 			     		var response;
 			     		
-			     			response = {message:'Category Deleted'};
-			        callbackSuccess2(response);
+			     			response = {message:'Category enabled'};
+			     			callbackSuccessenable(response);
 			     }, 1000);
 				}else{
 					 $http.put(APP_CONSTANT.REMOTE_HOST+'/admin/category/enable/'+data1.categoryId
@@ -234,7 +234,7 @@ categoryModule.factory('categoryService', function($http,$timeout,APP_CONSTANT) 
 		        			.error(function (data1, status, headers, config) { // IF STATUS CODE NOT 200
 		        					if(status== 422){
 		        						console.log(data1);
-		        						callbackError4(data1);
+		        						callbackErrorenable(data1);
 		        					}
 		        			});
 				}
@@ -249,7 +249,7 @@ categoryModule.factory('categoryService', function($http,$timeout,APP_CONSTANT) 
 			     		var response;
 			     		
 			     			response = {message:'Category Deleted'};
-			        callbackSuccess2(response);
+			        callbackSuccess3(response);
 			     }, 1000);
 				}else{
 					 $http.put(APP_CONSTANT.REMOTE_HOST+'/admin/category/delete/'+data1.categoryId

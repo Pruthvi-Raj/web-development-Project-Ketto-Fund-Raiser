@@ -64,8 +64,8 @@ authModule.factory('authService', function($rootScope,$http,$timeout,$cookieStor
 	            		if(data.username ==='ashwin2' && data.password==='pass'){
 	            			response = { 
 	            					  			id:'01',
-	            					  			name:'Funder',
-	            					  			role:'Funder'
+	            					  			name:'Pruthvi',
+	            					  			role:'Admin'
 	            					  		  
 	            						};
 	            			 callback(response);
