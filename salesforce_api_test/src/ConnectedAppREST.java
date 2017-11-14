@@ -2,8 +2,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import chi.bean.Site;
+import chi.bean.SiteList;
+import chi.bean.State;
+
 
 @WebServlet(urlPatterns = { "/SiteDetails" })
 /**
@@ -37,8 +43,13 @@ public class ConnectedAppREST extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ACCESS_TOKEN = "ACCESS_TOKEN";
 	private static final String INSTANCE_URL = "INSTANCE_URL";
-
-	private void showAccounts(String instanceUrl, String accessToken,
+	//private static final String STATE = "STATE";
+	
+	
+	
+	
+	
+	private void showAccounts(String instanceUrl, String accessToken, String state, SiteList siteList,
 			PrintWriter writer) throws ServletException, IOException {
 		CloseableHttpClient httpclient = HttpClients.createDefault();  
 
@@ -46,12 +57,14 @@ public class ConnectedAppREST extends HttpServlet {
 
 		//add key and value
 		httpGet.addHeader("Authorization", "OAuth " + accessToken);
-
+		
 
 		try {
-
+			System.out.println("Pruthvi you have selected " + state);
+			
+			
 			URIBuilder builder = new URIBuilder(instanceUrl+ "/services/data/v30.0/query");
-			builder.setParameter("q", "SELECT Name, Id from Account WHERE Name='MedChi Maryland State Medical Society' ");
+			builder.setParameter("q", "SELECT Name, Id from Account WHERE  Location_State_Province__c='"+state+"'");
 
 			httpGet.setURI(builder.build());
 
@@ -72,15 +85,29 @@ public class ConnectedAppREST extends HttpServlet {
 
 
 
-					System.out.println("Query response: "
-							+ authResponse.toString(2));
+					//System.out.println("Query response: "	+ authResponse.toString(2));
 
-					writer.write(authResponse.getInt("totalSize")
-							+ " record(s) returned\n\n");
+					writer.write(authResponse.getInt("totalSize")+ " record(s) returned\n\n");
 
 					JSONArray results = authResponse.getJSONArray("records");
 
 					for (int i = 0; i < results.length(); i++) {
+						Site site = siteList.addSite();
+						
+						String Id = results.getJSONObject(i).getString("Id");
+						String name = results.getJSONObject(i).getString("Name");
+						System.out.println(name+"  "+Id);
+						
+						site.setSiteId(Id); 
+						site.setSiteName(name);
+						
+						
+						//siteList.setArrayOfSite();
+				
+						
+						
+						
+						//siteList.setArrayOfSite();
 						writer.write(results.getJSONObject(i).getString("Id")
 								+ ", "
 								+ results.getJSONObject(i).getString("Name")
@@ -304,6 +331,10 @@ public class ConnectedAppREST extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
 
+		State s = (State) request.getAttribute("State");
+		
+		String state =  s.getName();
+		
 		String accessToken = (String) request.getSession().getAttribute(
 				ACCESS_TOKEN);
 
@@ -316,9 +347,11 @@ public class ConnectedAppREST extends HttpServlet {
 		}
 
 		writer.write("We have an access token: " + accessToken + "\n"
-				+ "Using instance " + instanceUrl + "\n\n");
+				+ "Using instance " + instanceUrl +" State "+ state+ "\n\n");
+		
+		SiteList siteList=new SiteList();
 
-		showAccounts(instanceUrl, accessToken, writer);
+		showAccounts(instanceUrl, accessToken, state, siteList, writer);
 
 		//String accountId = createAccount("My New Org", instanceUrl, accessToken, writer);
 
@@ -327,7 +360,7 @@ public class ConnectedAppREST extends HttpServlet {
 //		}
 
 		//showAccount(accountId, instanceUrl, accessToken, writer);
-		showAccounts(instanceUrl, accessToken, writer);
+		showAccounts(instanceUrl, accessToken, state, siteList, writer);
 
 		//updateAccount(accountId, "My New Org, Inc", "San Francisco", instanceUrl, accessToken, writer);
 
@@ -336,6 +369,19 @@ public class ConnectedAppREST extends HttpServlet {
 		//deleteAccount(accountId, instanceUrl, accessToken, writer);
 
 		//showAccounts(instanceUrl, accessToken, writer);
+		for(Site site: siteList.getSitesList()){
+			System.out.println("This is the array list");
+		System.out.println(site.getSiteId());
+		System.out.println(site.getSiteName());
+		}
+		
+		 System.out.println("My print statement" + siteList.getSitesList());
+		
+		request.setAttribute("SiteList", siteList);
+		request.setAttribute("State", s);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/SiteDetails.jsp");
+		rd.forward(request, response);
 	}
 	
 }

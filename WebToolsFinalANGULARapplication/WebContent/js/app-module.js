@@ -35,29 +35,29 @@ configModule.controller("applicationContoller", function($rootScope, $scope,$win
 	 		
 	 	
 	 		
-	 		
-	 		console.log(globals);
-	 		console.log(globals.userSession);
-	 		if(globals.userSession.role === 'Admin'){
-	 			$scope.username = "Welcome "+globals.userSession.name;
-	 			$('div#admin').show();
-	 			$('div#creator').hide();
-	 			$('div#Funder').hide();
-
-	 		}else if(globals.userSession.role === 'creator'){
-	 			$scope.username = "Welcome "+globals.userSession.name;
-	 			$('div#creator').show();
-	 			$('div#admin').hide();
-	 			$('div#Funder').hide();
-
-
-	 		}else if(globals.userSession.role === 'Funder'){
-	 			$scope.username = "Welcome "+globals.userSession.name;
-	 			$('div#Funder').show();
-	 			$('div#admin').hide();
-	 			$('div#creator').hide();
-
-	 		}
+		 		
+		 		console.log(globals);
+		 		console.log(globals.userSession);
+		 		if(globals.userSession.role === 'Admin'){
+		 			$scope.username = "Welcome "+globals.userSession.name;
+		 			$('div#admin').show();
+		 			$('div#creator').hide();
+		 			$('div#Funder').hide();
+	
+		 		}else if(globals.userSession.role === 'creator'){
+		 			$scope.username = "Welcome "+globals.userSession.name;
+		 			$('div#creator').show();
+		 			$('div#admin').hide();
+		 			$('div#Funder').hide();
+	
+	
+		 		}else if(globals.userSession.role === 'Funder'){
+		 			$scope.username = "Welcome "+globals.userSession.name;
+		 			$('div#Funder').show();
+		 			$('div#admin').hide();
+		 			$('div#creator').hide();
+	
+		 		}
 	 		
 	 		$('div#guest').hide();
 	 		$('div#logout').hide();

@@ -7,6 +7,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +28,10 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import chi.bean.Site;
+import chi.bean.SiteList;
+import chi.bean.State;
 
 
 	@WebServlet(name = "oauth", urlPatterns = { "/oauth/*", "/oauth" }, initParams = {
@@ -52,7 +57,10 @@ public class OAuthConnectedApp extends HttpServlet {
 
 	private static final String ACCESS_TOKEN = "ACCESS_TOKEN";
 	private static final String INSTANCE_URL = "INSTANCE_URL";
-
+	private static final String STATE = "STATE";
+	
+	
+	
 	private String clientId = null;
 	private String clientSecret = null;
 	private String redirectUri = null;
@@ -78,10 +86,15 @@ public class OAuthConnectedApp extends HttpServlet {
 		tokenUrl = environment + "/services/oauth2/token";
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	  throws ServletException, IOException {
 		String accessToken = (String) request.getSession().getAttribute(ACCESS_TOKEN);
-
-		//System.out.println("calling doget");
+		
+		
+		String state = request.getParameter("myField");
+		
+		System.out.println("Hi there"+state);
+		
 		if (accessToken == null) {
 			String instanceUrl = null;
 
@@ -143,15 +156,33 @@ public class OAuthConnectedApp extends HttpServlet {
 
 			}
 
+			
+			
+			
+			
+			
 			// Set a session attribute so that other servlets can get the access
 			// token
 			request.getSession().setAttribute(ACCESS_TOKEN, accessToken);
-
+			
+			
+			
 			// We also get the instance URL from the OAuth response, so set it
 			// in the session too
 			request.getSession().setAttribute(INSTANCE_URL, instanceUrl);
 		}
 
-		response.sendRedirect(request.getContextPath() + "/SiteDetails");
+		State s = new State();
+		Site st = new Site();
+		SiteList stList = new SiteList();
+		
+		s.setName(state);
+		System.out.println("This is after setting attribute" + s.getName());
+		request.setAttribute("State", s);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/SiteDetails");
+		rd.forward(request, response);
+		
+		//response.sendRedirect(request.getContextPath() + "/SiteDetails");
 	}
 }

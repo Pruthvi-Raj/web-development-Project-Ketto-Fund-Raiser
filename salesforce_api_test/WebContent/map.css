@@ -9,3 +9,12 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+
+div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+ #visualization path:hover { fill: cornflowerblue; }
+    #visualization rect:hover {fill:transparent;}

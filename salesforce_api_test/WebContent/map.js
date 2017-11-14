@@ -31,77 +31,111 @@
           
     	  
     	  var data = google.visualization.arrayToDataTable([
-            ['City',   'Population', 'Area'],
-            ['US-AL', 'Town1',13000],
-        	['US-MA', 'Town2', 1000],
-        	['US-AK', 'Town2',13000],
-        	['US-AZ', 'Town3',13000],
-        	['US-AR', 'Town4',13000],
-        	['US-CA', 'Town5',13000],
-        	['US-CO', 'Town6',13000],
-        	['US-CT', 'Town7',13000],
-        	['US-DE', 'Town8',13000],
-        	['US-DC', 'Town9',13000],
-        	['US-FL', 'Town10',13000],
-        	['US-GA', 'Town11',13000],
-        	['US-HI', 'Town12',13000],
-        	['US-ID', 'Town13',13000],
-        	['US-IL','Town14' ,13000],
-        	['US-IN', 'Town15',13000],
-        	['US-IA','Town16' ,13000],
-        	['US-KS', 'Town17',13000],
-        	['US-KY', 'Town18',13000],
-        	['US-LA', 'Town19',13000],
-        	['US-ME', 'Town20',13000],
-        	['US-MT', 'Town21',13000],
-        	['US-NE', 'Town22',13000],
-        	['US-NV', 'Town23',13000],
-        	['US-NH', 'Town24',13000],
-        	['US-NJ', 'Town25',13000],
-        	['US-NM', 'Town26',13000],
-        	['US-NY', 'Town27',13000],
-        	['US-NC', 'Town28',13000],
-        	['US-ND', 'Town29',13000],
-        	['US-OH', 'Town30',13000],
-        	['US-OK', 'Town31',13000],
-        	['US-OR', 'Town32',13000],
-        	['US-MD', 'Town33',13000],
-        	['US-MI', 'Town34',13000],
-        	['US-MN', 'Town35',13000],
-        	['US-MS', 'Town36',13000],
-        	['US-MO', 'Town37',13000],
-        	['US-PA', 'Town38',13000],
-        	['US-RI', 'Town39',13000],
-        	['US-SC', 'Town40',13000],
-        	['US-SD', 'Town41',13000],
-        	['US-TN', 'Town42',13000],
-        	['Texas', 'Town43',13000],
-        	['US-UT', 'Town44',13000],
-        	['US-VT', 'Town45',13000],
-        	['US-VA', 'Town46',13000],
-        	['US-WA', 'Town47',13000],
-        	['US-WV', 'Town48',13000],
-        	['US-WI', 'Town49',13000],
-        	['US-WY', 'Town50','']
+	            ['City',   'CenteringParenting', 'CenteringPregnancy'],
+	            ['AL', 3,13000],
+	        	['MA', 5, 1000],
+	        	['AK', 5,13000],
+	        	['AZ', 6,13000],
+	        	['AR', 7,13000],
+	        	['CA', 5,13000],
+            	['CO', 6,13000],
+            	['CT', 7,13000],
+            	['DE', 8,13000],
+            	['DC', 9,13000],
+            	['FL', 10,13000],
+            	['GA', 11,13000],
+            	['HI', 12,13000],
+            	['ID', 13,13000],
+            	['IL',14 ,13000],
+            	['IN', 15,13000],
+            	['IA',16 ,13000],
+            	['KS', 17,13000],
+            	['KY', 18,13000],
+            	['LA', 19,13000],
+            	['ME', 20,13000],
+            	['MT', 21,13000],
+            	['NE', 22,13000],
+            	['NV', 23,13000],
+            	['NH', 24,13000],
+            	['NJ', 25,13000],
+            	['NM', 26,13000],
+            	['NY', 27,13000],
+            	['NC', 28,13000],
+            	['ND', 29,13000],
+            	['OH', 30,13000],
+            	['OK', 31,13000],
+            	['OR', 32,13000],
+            	['MD', 33,13000],
+            	['MI', 34,13000],
+            	['MN', 35,13000],
+            	['MS', 36,13000],
+            	['MO', 37,13000],
+            	['PA', 38,13000],
+            	['RI', 39,13000],
+            	['SC', 40,13000],
+            	['SD', 41,13000],
+            	['TN', 42,13000],
+            	['TX', 43,13000],
+            	['UT', 44,13000],
+            	['VT', 45,13000],
+            	['VA', 46,13000],
+            	['WA', 47,13000],
+            	['WV', 48,13000],
+            	['WI', 49,13000],
+            	['WY', 50,23784]
           ]);
 
-          var options = {width: 2000, height: 900,datalessRegionColor: 'ADD8E6', legend: 'none',colorAxis: {colors: ['#DAA520', '#DAA520']},region: 'US',resolution: "provinces"
+          var options = {
+        		  width: 2000, 
+        		  height: 900,
+        		  datalessRegionColor: 'ADD8E6', 
+        		  legend: 'none',
+        		  colorAxis: {
+        			  colors: ['#DAA520', '#DAA520']
+        		  },
+        		  region: 'US',
+        		  resolution: "provinces"
           };
 
-          var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-          chart.draw(data, options);
+          var container = document.getElementById('regions_div');
+          var chart = new google.visualization.GeoChart(container);
           
-          google.visualization.events.addListener(chart, 'select', function() {
-    	      var selection = chart.getSelection();
-
-    	      // if same city is clicked twice in a row
-    	      // it is "unselected", and selection = []
-    	      if(typeof selection[0] !== "undefined") {
-    	        var value = data.getValue(selection[0].row, 0);
-    	        alert('City is: ' + value);
-//    	        $location.path( '/ResponsiveMap' );
-    	      }
-    	  });
+          
+          google.visualization.events.addListener(chart, 'select', myClickHandler);
+          
+         
+          
+          
+          
+          var lastEvent = null;
+          container.addEventListener('click', function (e) {
+            lastEvent = e;
+          }, false);
+          /*container.addEventListener('mouseover', function (e) {
+            lastEvent = e;
+            // dispatch click event to get hover value
+            var event = document.createEvent('SVGEvents');
+            event.initEvent('click', true, true);
+            e.target.dispatchEvent(event);
+          }, false);
+*/
+          
+          
+          
+          function myClickHandler() {
+        	    var selection = chart.getSelection();
+        	    var message = '';
+        	    if (selection.length > 0) {
+        	      if (selection[0].row !== null) {
+        	          // click
+        	          console.log("/" + data.getValue(selection[0].row, 0));
+        	          var value1 = data.getValue(selection[0].row, 0);
+          	        //alert('City is: ' + value1);
+          	        document.getElementById('myField').value = value1;
+          	        document.getElementById("myform").submit();
+        	      }
+        	    }
+        	  }
           
           //Hover event action 
 //          google.visualization.events.addListener(chart, 'hover', function() {
@@ -115,7 +149,10 @@
 //    	        $location.path( '/ResponsiveMap' );
 //    	      }
 //    	  });
-        };
+        
+          chart.draw(data, options);
+      
+      };
         
         
   
