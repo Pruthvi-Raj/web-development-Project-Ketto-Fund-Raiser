@@ -86,14 +86,16 @@
           ]);
 
           var options = {
-        		  width: 2000, 
-        		  height: 900,
+        		  width: 1000, 
+        		  height: 700,
         		  datalessRegionColor: 'ADD8E6', 
         		  legend: 'none',
         		  colorAxis: {
         			  colors: ['#DAA520', '#DAA520']
         		  },
         		  region: 'US',
+        		  enableRegionInteractivity: 'true',
+        		  
         		  resolution: "provinces"
           };
 
