@@ -95,7 +95,7 @@
         		  },
         		  region: 'US',
         		  enableRegionInteractivity: 'true',
-        		  
+        		  //displayMode: 'markers',
         		  resolution: "provinces"
           };
 

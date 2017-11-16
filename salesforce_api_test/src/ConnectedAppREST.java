@@ -64,7 +64,7 @@ public class ConnectedAppREST extends HttpServlet {
 			
 			
 			URIBuilder builder = new URIBuilder(instanceUrl+ "/services/data/v30.0/query");
-			builder.setParameter("q", "SELECT Name, Id from Account WHERE  Location_State_Province__c='"+state+"'");
+			builder.setParameter("q", "SELECT Name, Id, Location_Street__c from Account WHERE  Location_State_Province__c='"+state+"'");
 
 			httpGet.setURI(builder.build());
 
@@ -96,10 +96,12 @@ public class ConnectedAppREST extends HttpServlet {
 						
 						String Id = results.getJSONObject(i).getString("Id");
 						String name = results.getJSONObject(i).getString("Name");
+						String address = String.valueOf(results.getJSONObject(i).getNames("Location_Street__c"));
 						System.out.println(name+"  "+Id);
 						
 						site.setSiteId(Id); 
 						site.setSiteName(name);
+						site.setAddress(address);
 						
 						
 						//siteList.setArrayOfSite();

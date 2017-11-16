@@ -3,6 +3,8 @@
 #map {
   height: 100%;
 }
+
+#regions_div path:hover{fill:cornflowerblue}
 /* Optional: Makes the sample page fill the window. */
 /* html, body {
   height: 100%;

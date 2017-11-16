@@ -6,17 +6,30 @@
 	State state = (State) request.getAttribute("State");*/
 
 function drawMap(){
-	
-	var data = google.visualization.arrayToDataTable([
-		['Sites', 'Locations'],
-		['Centeringhealthcare', '89 southstreet'],
-		
-	]);
-	
+	var d = document.getElementById('siteAddress1').value
+	console.log(d)
+	var array = d.split('|');
+	console.log(array[20])
+	var i;
 	
 	
+	var dataArray = [['siteName']];
+	
+	for (i=0;i<array.length;i++) {
+		console.log("Javascript"+array[i])
+		dataArray.push([array[i]])
+	}
+	
+	console.log(dataArray)
+	
+	
+	var data = google.visualization.arrayToDataTable(dataArray);
+	
+	var state = document.getElementById('stateValue').value;
+	var newState = "US-"+state;
+	//alert(newState)
 	var options = {
-			region: 'US-MA',
+			region: newState,
 			 backgroundColor: '#eee',
 			    datalessRegionColor: '#ffc801',
 			    width: 1000,
@@ -24,6 +37,7 @@ function drawMap(){
 			    zoon:12,
 			    displayMode: 'markers',
 			    resolution: 'provinces',
+			    legend: 'none',
 			    enableRegionInteractivity: 'true',
 	};
 	
@@ -33,6 +47,8 @@ function drawMap(){
 	  
 	   //alert(inputState1);
 	
+	  
+	  //alert(state);
 	 /* var markers = locations.chart(function(location, i) {
 		    return new google.maps.Marker({
 		      position: location,

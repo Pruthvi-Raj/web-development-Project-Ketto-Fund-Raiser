@@ -13,7 +13,7 @@
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-<script type='text/javascript' > 
+<script type='text/javascript'> 
   var inputState = false; 
 </script>
 
@@ -31,51 +31,54 @@ System.out.println("Check " + inputState1);
 
 <script type="text/javascript" language="javascript"
 	src="SiteDetails.js"></script>
-	
-<style>
-	#mapcontainer{
-		padding-top: 0px
-	}
-	#map{
-		padding-top: 0px;
-	}
 
-	table,  td {
-    border: 1px solid black;
+<style>
+
+/* #mapcontainer path:hover{fill: cornflowerblue;} */
+
+table, td {
+	border: 1px solid black;
+}
+
+#list {
+	z-index: 9999;
+}
 }
 </style>
 
 </head>
 <body>
 
+	<input type="hidden" name="stateValue" id="stateValue"
+		value="<%=state.getName()%>" />
 
-	<div id="mapcontainer" style="float: right;"></div>
-	
-	<div style="position: absolute;">
-			<ul class="regions" id="regions"><%=state.getName() %>
-						<%
+	<input type="hidden" name="siteAddress1" id="siteAddress1"
+		value="<%
+				for (Site s : siteList.getSitesList()) {
+				System.out.println("Array check " + s.getSiteName());
+				%>
+				<%=s.getSiteName()+"|" %>
+
+			<%	}
+			%>" />
+
+	<div id="list" style="float: left;">
+		<ul class="regions" id="regions"><%=state.getName() %>
+			<%
 							System.out.println("What is happening " + state.getName());
 							for (Site s : siteList.getSitesList()) {
 								//System.out.println("Final page " + s.getSiteName() + "\n");
 						%>
-						<li value="<%=s.getSiteName()%>"><%=s.getSiteName()%></li>
-						<%
+			<li value="<%=s.getSiteName()%>"><%=s.getSiteName()%></li>
+			<%-- <li value="<%=s.getAddress()%>"><%=s.getAddress()%></li> --%>
+			<%
 							}
 						%>
-					</ul>
-			 
+		</ul>
+
 	</div>
-			
-	
 
-	
-
-
-	
-
-
-
-
+	<div id="mapcontainer" style="float: right;"></div>
 
 
 </body>
