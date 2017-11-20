@@ -1,32 +1,6 @@
 /**
  * 
- */
-
-
-
-
-      function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable([
-        	['State', 'Stats', 'Population'],
-        	['US-AL', 'Town1',13000],
-        	['US-MA', 'Town2', 1000]
-        	
-        ]);
-
-       
-        
-        var options = {width: 2000, height: 700,colorAxis: {colors: ['blue', 'light green']}, region: "US", resolution: "provinces"};
-
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'), {
-        	zoom: 8
-        });
-
-        chart.draw(data, options);
-        
-      
-        }
-      
-      
+ */      
       function drawMarkersMap() {
           
     	  

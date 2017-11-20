@@ -64,7 +64,7 @@ public class ConnectedAppREST extends HttpServlet {
 			
 			
 			URIBuilder builder = new URIBuilder(instanceUrl+ "/services/data/v30.0/query");
-			builder.setParameter("q", "SELECT Name, Id, Location_Street__c from Account WHERE  Location_State_Province__c='"+state+"'");
+			builder.setParameter("q", "SELECT Name, Id, Location_Street__c, Location_City__c, Website from Account WHERE  Location_State_Province__c='"+state+"'");
 
 			httpGet.setURI(builder.build());
 
@@ -96,12 +96,23 @@ public class ConnectedAppREST extends HttpServlet {
 						
 						String Id = results.getJSONObject(i).getString("Id");
 						String name = results.getJSONObject(i).getString("Name");
-						String address = String.valueOf(results.getJSONObject(i).getNames("Location_Street__c"));
-						System.out.println(name+"  "+Id);
+						String city = String.valueOf(results.getJSONObject(i).get("Location_City__c"));
+						String address = String.valueOf(results.getJSONObject(i).get("Location_Street__c"));
+						String url = String.valueOf(results.getJSONObject(i).get("Website"));
+						//String address1 = String.valueOf(results.getJSONObject(i).getString("Location_City__c"));
+
+						
+						//String url = String.valueOf(results.getJSONObject(i).get("url"));
+						
+						String fullAddress = name+ ", " + address;
+						System.out.println(name+" ,,,, "+address);
+						System.out.println("city name is"+city);
+						System.out.println("Website url is "+url); 
 						
 						site.setSiteId(Id); 
 						site.setSiteName(name);
-						site.setAddress(address);
+						site.setAddress(fullAddress);
+						site.setUrl(url);
 						
 						
 						//siteList.setArrayOfSite();
@@ -353,7 +364,7 @@ public class ConnectedAppREST extends HttpServlet {
 		
 		SiteList siteList=new SiteList();
 
-		showAccounts(instanceUrl, accessToken, state, siteList, writer);
+		//showAccounts(instanceUrl, accessToken, state, siteList, writer);
 
 		//String accountId = createAccount("My New Org", instanceUrl, accessToken, writer);
 

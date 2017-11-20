@@ -34,7 +34,7 @@ System.out.println("Check " + inputState1);
 
 <style>
 
-/* #mapcontainer path:hover{fill: cornflowerblue;} */
+ #mapcontainer path:hover{fill: #da8f20;} 
 
 table, td {
 	border: 1px solid black;
@@ -55,9 +55,11 @@ table, td {
 	<input type="hidden" name="siteAddress1" id="siteAddress1"
 		value="<%
 				for (Site s : siteList.getSitesList()) {
-				System.out.println("Array check " + s.getSiteName());
+				//System.out.println("Array check " + s.getSiteName());
 				%>
-				<%=s.getSiteName()+"|" %>
+				<%=s.getAddress()+"|" %>
+				
+				
 
 			<%	}
 			%>" />
@@ -69,7 +71,7 @@ table, td {
 							for (Site s : siteList.getSitesList()) {
 								//System.out.println("Final page " + s.getSiteName() + "\n");
 						%>
-			<li value="<%=s.getSiteName()%>"><%=s.getSiteName()%></li>
+			<li value="<%=s.getSiteName()%>"><a href="<%=s.getUrl()%>"><%=s.getSiteName()%></a></li>
 			<%-- <li value="<%=s.getAddress()%>"><%=s.getAddress()%></li> --%>
 			<%
 							}

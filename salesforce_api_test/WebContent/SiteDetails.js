@@ -31,7 +31,7 @@ function drawMap(){
 	var options = {
 			region: newState,
 			 backgroundColor: '#eee',
-			    datalessRegionColor: '#ffc801',
+			    datalessRegionColor: '#DAA520',
 			    width: 1000,
 			    height: 800,
 			    zoon:12,
@@ -42,8 +42,13 @@ function drawMap(){
 	};
 	
 	 var container = document.getElementById('mapcontainer');
-	  var chart = new google.visualization.GeoChart(container);
-	 
+	  var chart = new google.visualization.GeoChart(container,{
+		  zoom: 12
+	  });
+	 /*
+	  var markerCluster = new MarkerClusterer(map, markers,
+		      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+		*/
 	  
 	   //alert(inputState1);
 	

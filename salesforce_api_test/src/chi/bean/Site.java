@@ -5,6 +5,7 @@ public class Site {
 	String siteName;
 	int sitePhone;
 	String address;
+	String url;
 	
 	
 	public String getSiteId() {
@@ -30,5 +31,11 @@ public class Site {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }
