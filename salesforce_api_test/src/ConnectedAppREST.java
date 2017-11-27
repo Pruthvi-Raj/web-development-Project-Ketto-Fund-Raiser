@@ -384,7 +384,7 @@ public class ConnectedAppREST extends HttpServlet {
 		//showAccounts(instanceUrl, accessToken, writer);
 		for(Site site: siteList.getSitesList()){
 			System.out.println("This is the array list");
-		System.out.println(site.getSiteId());
+		System.out.println(site.getUrl());
 		System.out.println(site.getSiteName());
 		}
 		

@@ -79,10 +79,6 @@
           
           google.visualization.events.addListener(chart, 'select', myClickHandler);
           
-         
-          
-          
-          
           var lastEvent = null;
           container.addEventListener('click', function (e) {
             lastEvent = e;
@@ -135,7 +131,7 @@
 
 
 
-function initMap() {
+/*function initMap() {
   var myLatlng = {lat: 39.8283, lng: -98.5795};
   
   
@@ -198,4 +194,4 @@ function initMap() {
     
     //map.setCenter(marker.getPosition());
   });
-}
+}*/
