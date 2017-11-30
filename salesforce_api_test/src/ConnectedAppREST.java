@@ -64,7 +64,11 @@ public class ConnectedAppREST extends HttpServlet {
 			
 			
 			URIBuilder builder = new URIBuilder(instanceUrl+ "/services/data/v30.0/query");
-			builder.setParameter("q", "SELECT Name, Id, Location_Street__c, Location_City__c, Website from Account WHERE  Location_State_Province__c='"+state+"'");
+			builder.setParameter("q", "SELECT Name, Id, Location_Street__c, Location_City__c, Website, Phone, Approval__c,"
+					+ " Active_Models__c, Of_CenteringPregnancy_Models__c, "
+					+ "Of_CenteringParenting_Models__c, Membership_Status2__c, "
+					+ "(SELECT Name FROM Models__r WHERE State__c = 'Active' AND (Name = 'CenteringPregnancy' OR Name = 'CenteringParenting'))  "
+					+ "from Account WHERE  Location_State_Province__c='"+state+"'");
 
 			httpGet.setURI(builder.build());
 
@@ -82,14 +86,13 @@ public class ConnectedAppREST extends HttpServlet {
 					InputStream rstream = entity.getContent();
 					JSONObject authResponse = new JSONObject(
 							new JSONTokener(rstream));
-
-
-
 					//System.out.println("Query response: "	+ authResponse.toString(2));
 
 					writer.write(authResponse.getInt("totalSize")+ " record(s) returned\n\n");
 
 					JSONArray results = authResponse.getJSONArray("records");
+					
+					System.out.println(results);
 
 					for (int i = 0; i < results.length(); i++) {
 						Site site = siteList.addSite();
@@ -100,21 +103,40 @@ public class ConnectedAppREST extends HttpServlet {
 						String address = String.valueOf(results.getJSONObject(i).get("Location_Street__c"));
 						String url = String.valueOf(results.getJSONObject(i).get("Website"));
 						//String address1 = String.valueOf(results.getJSONObject(i).getString("Location_City__c"));
-
+						String phone = String.valueOf(results.getJSONObject(i).get("Phone"));
+						String approve = String.valueOf(results.getJSONObject(i).get("Approval__c"));
+						String modelName = String.valueOf(results.getJSONObject(i).get("Models__r"));
+						String newModelName = modelName.replace("\"", "");
+						String newModelName1 = newModelName.replace("}", "");
+						String newModelName2 = newModelName1.replace("]", "");
+						String newModelName3 = newModelName2.replace("Name:", "");
+						String [] words = newModelName3.split(",");
 						
-						//String url = String.valueOf(results.getJSONObject(i).get("url"));
+						String finalModelName = "";
+						for(String w : words){
+							if(w.equals("CenteringPregnancy")  ){
+								finalModelName =  "CenteringPregnancy";
+								System.out.println(finalModelName + name);
+							}else{
+								finalModelName =  finalModelName + " ";
+							}
+							if(w.equals("CenteringParenting")){
+								finalModelName = finalModelName +"  "+ "CenteringParenting";
+								System.out.println(finalModelName +name + "\n");
+								break;
+							}
+							System.out.println("Complete Model---" + finalModelName + "       Site Name ---  " + name);
+						}
 						
-						String fullAddress = name+ ", " + address;
-						System.out.println(name+" ,,,, "+address);
-						System.out.println("city name is"+city);
-						System.out.println("Website url is "+url); 
+						System.out.println("Ultimate for site  "+name+"   "+ finalModelName);
 						
 						site.setSiteId(Id); 
 						site.setSiteName(name);
-						site.setAddress(fullAddress);
+						site.setAddress(address);
 						site.setUrl(url);
-						
-						
+						site.setSitePhone(phone);
+						site.setApproval(approve);
+						site.setFinalModelname(finalModelName);
 						//siteList.setArrayOfSite();
 				
 						
@@ -382,13 +404,13 @@ public class ConnectedAppREST extends HttpServlet {
 		//deleteAccount(accountId, instanceUrl, accessToken, writer);
 
 		//showAccounts(instanceUrl, accessToken, writer);
-		for(Site site: siteList.getSitesList()){
+		/*for(Site site: siteList.getSitesList()){
 			System.out.println("This is the array list");
 		System.out.println(site.getUrl());
 		System.out.println(site.getSiteName());
 		}
 		
-		 System.out.println("My print statement" + siteList.getSitesList());
+		 System.out.println("My print statement" + siteList.getSitesList());*/
 		
 		request.setAttribute("SiteList", siteList);
 		request.setAttribute("State", s);

@@ -20,9 +20,7 @@
 <%
 	String inputState1 = state.getName();
 %>
-<%
-	System.out.println("Check " + inputState1);
-%>
+
 <script type="text/javascript" language="javascript"
 	src="SiteDetails.js"></script>
 <style>
@@ -30,12 +28,34 @@
 	fill: #da8f20;
 }
 
+#mapcontainer {
+	position: fixed;
+    top: 2em;
+    right: 0em;
+    bottom: 1em;
+    height:100%;
+    
+}
+
 table, td {
 	border: 1px solid black;
 }
 
+
 #list {
 	z-index: 9999;
+}
+
+#myDiv{
+	display:none;
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: lightblue;
+    margin-top: 20px;
+}
+li:hover  #myDiv {
+	display: block;
 }
 </style>
 
@@ -46,8 +66,9 @@ table, td {
 
 	<input type="hidden" name="siteAddress1" id="siteAddress1"
 		value="<%for (Site s : siteList.getSitesList()) {
-				//System.out.println("Array check " + s.getSiteName());%>
-				<%=s.getAddress() + "|"%>
+				%>
+				<%=s.getSiteName()+","%>
+				<%=s.getAddress()+ "|"%>
 			<%}%>" />
 			
 	<input type="hidden" name="siteUrl" id="siteUrl"
@@ -55,7 +76,7 @@ table, td {
 				//System.out.println("Array check " + s.getSiteName());%>
 				<%=s.getUrl() + "|"%>
 			<%}%>" />
-			
+		
 
 	<div id="list" style="float: left;">
 		<ul class="regions" id="regions"><%=state.getName()%>
@@ -63,8 +84,40 @@ table, td {
 				for (Site s : siteList.getSitesList()) {
 			%>
 			<li id="siteList" value="<%=s.getSiteName()%>"><a
-				href="<%=s.getUrl()%>" onmouseover="style.color='red'"
-				onmouseout="style.color='blue'"><%=s.getSiteName()%></a></li>
+				href="<%=s.getUrl()%>" onmouseover="style.color='green'"
+				onmouseout="style.color='blue'"><%=s.getSiteName()%></a><br>
+				
+				<div id = "myDiv">
+					<%=s.getSiteName() %><br>
+					
+					<%if(s.getAddress() == "null"){%>
+						-<br>
+					<%}else{%>
+						<%=s.getAddress() %><br>
+					<%} %>
+					
+					<%if(s.getSitePhone() == "null"){%>
+						-<br>
+					<%}else{%>
+						<%=s.getSitePhone() %><br>
+					<%} %>
+					
+					<%if(s.getFinalModelname() == "null"){%>
+						-<br>
+					<%}else{%>
+						<%=s.getFinalModelname() %><br>
+					<%} %>
+				
+					<%if(s.getApproval() == "null"){%>
+						-<br>
+					<%}else{%>
+						<b><%=s.getApproval() %></b><br>
+					<%} %>
+					
+					
+				</div>
+					
+				</li>
 			<%
 				}
 			%>
@@ -72,7 +125,7 @@ table, td {
 
 	</div>
 
-	<div id="mapcontainer" style="float: right;"></div>
+	<div id="mapcontainer" style="height:100%"></div>
 
 
 </body>

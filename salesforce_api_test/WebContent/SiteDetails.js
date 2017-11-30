@@ -2,9 +2,6 @@
  * 
  */
 
-	/*SiteList siteList = (SiteList) request.getAttribute("SiteList");
-	State state = (State) request.getAttribute("State");*/
-
 function drawMap(){
 	var d = document.getElementById('siteAddress1').value
 	//console.log(d)
@@ -20,7 +17,7 @@ function drawMap(){
 		dataArray.push([array[i]])
 	}
 	
-	//console.log(dataArray)
+	console.log(dataArray)
 	
 	
 	var data = google.visualization.arrayToDataTable(dataArray);
@@ -122,6 +119,7 @@ google.charts.load('current', {
 	  packages:['geochart'],
 	  callback: drawMap
 	});
+
 
 
 
