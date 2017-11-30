@@ -57,10 +57,34 @@ table, td {
 li:hover  #myDiv {
 	display: block;
 }
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-left:30px;
+    background-color: white;
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 20%;
+}
 </style>
 
 </head>
 <body>
+
+<div>
+  <input type="text" name="search" id="searchField" placeholder="Search.." onkeyup="myFunction()">
+</div>
 	<input type="hidden" name="stateValue" id="stateValue"
 		value="<%=state.getName()%>" />
 
@@ -102,7 +126,7 @@ li:hover  #myDiv {
 						<%=s.getSitePhone() %><br>
 					<%} %>
 					
-					<%if(s.getFinalModelname() == "null"){%>
+					<%if(s.getFinalModelname() == " "){%>
 						-<br>
 					<%}else{%>
 						<%=s.getFinalModelname() %><br>
