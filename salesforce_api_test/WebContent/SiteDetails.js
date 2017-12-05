@@ -127,9 +127,12 @@ function myFunction() {
     filter = input.value.toUpperCase();
     ul = document.getElementById("regions");
     li = ul.getElementsByTagName("li");
+    //model = li.getElementById("modelDiv");
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        modelDiv = li[i].getElementsByTagName("b")[0];
+        //model = modelDiv.getElementsByTagname("b");
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1 || modelDiv.innerHTML.toUpperCase().indexOf(filter) > -1 ) {
             li[i].style.display = "";
         } else {
             li[i].style.display = "none";

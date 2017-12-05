@@ -46,7 +46,7 @@ table, td {
 	z-index: 9999;
 }
 
-#myDiv{
+#myDiv {
 	display:none;
     width: 100%;
     padding: 50px 0;
@@ -54,12 +54,12 @@ table, td {
     background-color: lightblue;
     margin-top: 20px;
 }
-li:hover  #myDiv {
+li:hover  #myDiv  {
 	display: block;
 }
 
 input[type=text] {
-    width: 130px;
+    width: 276px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -83,7 +83,7 @@ input[type=text]:focus {
 <body>
 
 <div>
-  <input type="text" name="search" id="searchField" placeholder="Search.." onkeyup="myFunction()">
+  <input type="text" name="search" id="searchField" placeholder="Search by site name or model" onkeyup="myFunction()">
 </div>
 	<input type="hidden" name="stateValue" id="stateValue"
 		value="<%=state.getName()%>" />
@@ -107,11 +107,12 @@ input[type=text]:focus {
 			<%
 				for (Site s : siteList.getSitesList()) {
 			%>
-			<li id="siteList" value="<%=s.getSiteName()%>"><a
-				href="<%=s.getUrl()%>" onmouseover="style.color='green'"
-				onmouseout="style.color='blue'"><%=s.getSiteName()%></a><br>
-				
+			<li id="siteList" value="<%=s.getFinalModelname()%>">
+			<a href="<%=s.getUrl()%>" onmouseover="style.color='green'"	onmouseout="style.color='blue'">
+			<%=s.getSiteName()%>
+			</a><br>
 				<div id = "myDiv">
+				
 					<%=s.getSiteName() %><br>
 					
 					<%if(s.getAddress() == "null"){%>
@@ -126,22 +127,23 @@ input[type=text]:focus {
 						<%=s.getSitePhone() %><br>
 					<%} %>
 					
+					<b id = "modelDiv">
 					<%if(s.getFinalModelname() == " "){%>
-						-<br>
+						<br>
 					<%}else{%>
 						<%=s.getFinalModelname() %><br>
 					<%} %>
+					</b>
 				
 					<%if(s.getApproval() == "null"){%>
-						-<br>
+						<br>
 					<%}else{%>
 						<b><%=s.getApproval() %></b><br>
 					<%} %>
-					
-					
+						
 				</div>
-					
-				</li>
+				
+			  </li>
 			<%
 				}
 			%>
