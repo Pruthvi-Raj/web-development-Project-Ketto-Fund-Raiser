@@ -4,7 +4,7 @@
 
 function drawMap(){
 	var d = document.getElementById('siteAddress1').value
-	//console.log(d)
+	console.log(d)
 	var array = d.split('|');
 	//console.log(array[20])
 	var i;
@@ -12,8 +12,8 @@ function drawMap(){
 	
 	var dataArray = [['siteName']];
 	
-	for (i=0;i<array.length;i++) {
-		//console.log("Javascript"+array[i])
+	for (i=0;i<array.length-1;i++) {
+		console.log("Javascript"+array[i])
 		dataArray.push([array[i]])
 	}
 	
@@ -28,13 +28,13 @@ function drawMap(){
 	var options = {
 			region: newState,
 			 backgroundColor: '#eee',
-			    datalessRegionColor: '#DAA520',
+			    datalessRegionColor: '#179ADF',
 			    width: 1000,
 			    height: 800,
 			    zoon:12,
 			    displayMode: 'markers',
 			    resolution: 'provinces',
-			    defaultColor: '#267114',
+			    defaultColor: '#EEEE51',
 			    //legend: 'none',
 			    magnifyingGlass: { zoomFactor: 10.0},
 			    colorAxis: {colors: ['#e7711c', '#4374e0']},

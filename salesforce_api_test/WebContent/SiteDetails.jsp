@@ -9,7 +9,7 @@
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoizxb0FMB89793hKaM_fC1lX40vS3eJE"></script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
-
+<link rel = "stylesheet" type = "text/css" href = "SiteDetails.css" />
 <script type='text/javascript'>
 	var inputState = false;
 </script>
@@ -24,59 +24,7 @@
 <script type="text/javascript" language="javascript"
 	src="SiteDetails.js"></script>
 <style>
-#mapcontainer path:hover {
-	fill: #da8f20;
-}
 
-#mapcontainer {
-	position: fixed;
-    top: 2em;
-    right: 0em;
-    bottom: 1em;
-    height:100%;
-    
-}
-
-table, td {
-	border: 1px solid black;
-}
-
-
-#list {
-	z-index: 9999;
-}
-
-#myDiv {
-	display:none;
-    width: 100%;
-    padding: 50px 0;
-    text-align: center;
-    background-color: lightblue;
-    margin-top: 20px;
-}
-li:hover  #myDiv  {
-	display: block;
-}
-
-input[type=text] {
-    width: 276px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-left:30px;
-    background-color: white;
-    background-image: url('/css/searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-
-input[type=text]:focus {
-    width: 20%;
-}
 </style>
 
 </head>
@@ -91,8 +39,7 @@ input[type=text]:focus {
 	<input type="hidden" name="siteAddress1" id="siteAddress1"
 		value="<%for (Site s : siteList.getSitesList()) {
 				%>
-				<%=s.getSiteName()+","%>
-				<%=s.getAddress()+ "|"%>
+				<%=s.getSiteName()+"|"%>
 			<%}%>" />
 			
 	<input type="hidden" name="siteUrl" id="siteUrl"
@@ -101,6 +48,17 @@ input[type=text]:focus {
 				<%=s.getUrl() + "|"%>
 			<%}%>" />
 		
+	<table>
+		<tbody>
+			<tr>
+			
+			
+			
+			</tr>
+		</tbody>
+	
+	
+	</table>
 
 	<div id="list" style="float: left;">
 		<ul class="regions" id="regions"><%=state.getName()%>
@@ -116,13 +74,13 @@ input[type=text]:focus {
 					<%=s.getSiteName() %><br>
 					
 					<%if(s.getAddress() == "null"){%>
-						-<br>
+						<br>
 					<%}else{%>
 						<%=s.getAddress() %><br>
 					<%} %>
 					
 					<%if(s.getSitePhone() == "null"){%>
-						-<br>
+						<br>
 					<%}else{%>
 						<%=s.getSitePhone() %><br>
 					<%} %>

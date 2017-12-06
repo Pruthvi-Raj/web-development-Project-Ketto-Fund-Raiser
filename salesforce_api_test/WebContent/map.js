@@ -62,10 +62,10 @@
           var options = {
         		  width: 1000, 
         		  height: 700,
-        		  datalessRegionColor: 'ADD8E6', 
+        		  datalessRegionColor: '#179ADF', 
         		  legend: 'none',
         		  colorAxis: {
-        			  colors: ['#DAA520', '#DAA520']
+        			  colors: ['#179ADF', '#179ADF']
         		  },
         		  region: 'US',
         		  enableRegionInteractivity: 'true',
