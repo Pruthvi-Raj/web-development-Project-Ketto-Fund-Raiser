@@ -171,14 +171,21 @@ public class OAuthConnectedApp extends HttpServlet {
 			// in the session too
 			request.getSession().setAttribute(INSTANCE_URL, instanceUrl);
 		}
-
 		State s = new State();
 		Site st = new Site();
 		SiteList stList = new SiteList();
+
+		if(state != null){
+			
+			
+			s.setName(state);
+			System.out.println("This is after setting attribute" + s.getName());
+			request.setAttribute("State", s);
+		}else{
+			request.setAttribute("State", null);
+		}
 		
-		s.setName(state);
-		System.out.println("This is after setting attribute" + s.getName());
-		request.setAttribute("State", s);
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/SiteDetails");
 		rd.forward(request, response);

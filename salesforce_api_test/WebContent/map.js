@@ -4,6 +4,19 @@
       function drawMarkersMap() {
           
     	  
+    	 /* var d = document.getElementById('stateDetails').value
+    	  
+    	  console.log(d);
+    	  var array = d.split('|');
+    	  var dataArray = [['stateName','ModelName']];
+    	  
+    	  for (i=0;i<array.length-1;i++) {
+    			console.log("Javascript"+array[i])
+    			dataArray.push([array[i]])
+    		}
+    	  
+    	  console.log(dataArray)*/
+    	  
     	  var data = google.visualization.arrayToDataTable([
 	            ['City',   'CenteringParenting', 'CenteringPregnancy'],
 	            ['AL', 3,13000],
