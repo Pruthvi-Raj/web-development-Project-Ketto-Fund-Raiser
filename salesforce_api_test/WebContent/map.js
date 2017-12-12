@@ -4,20 +4,43 @@
       function drawMarkersMap() {
           
     	  
-    	 /* var d = document.getElementById('stateDetails').value
+    	  var d = document.getElementById('stateDetails').value
     	  
     	  console.log(d);
     	  var array = d.split('|');
-    	  var dataArray = [['stateName','ModelName']];
+    	  console.log(array)
+    	  var dataArray = [['stateName','ModelName','Totalsites']];
+    	  console.log("Data array step "+dataArray)
     	  
-    	  for (i=0;i<array.length-1;i++) {
+    	  console.log(array[1])
+    	  
+    	  for (i=0;i<array.length-1 ;i++) {
     			console.log("Javascript"+array[i])
-    			dataArray.push([array[i]])
+    			var array1 = array[i].split(',');
+    			console.log(array1)
+    			//console.log("Coloumns array "+ array1);
+    			var subArray = []
+    			/*for(j=0;j<3 ;j++){
+    				//console.log("This is each column "+array1[j]);
+    				//dataArray.push([array[i]])
+    				//array[i].push([array1[j]])
+    				//console.log("This is the sub array "+array[i]);
+    				subArray.push([array1[j]]);
+    				console.log("This is while adding coloumns " + subArray)
+    				dataArray[i][j] = subArray
+    				//console.log([subArray])
+    			}*/
+    		dataArray.push(array1)
+    			
+    			//console.log("Data array step "+dataArray)
     		}
     	  
-    	  console.log(dataArray)*/
+    	  //console.log("HERE WE ARE DON'T TURN AWAY NOW, WE ARE THE WARRIORS THAT BUILT THIS TOWN \n"+ dataArray)
+    	  console.log(dataArray[1][1])
     	  
-    	  var data = google.visualization.arrayToDataTable([
+    	  var data = google.visualization.arrayToDataTable([[dataArray]]);
+    	  
+    	  /*var data = google.visualization.arrayToDataTable([
 	            ['City',   'CenteringParenting', 'CenteringPregnancy'],
 	            ['AL', 3,13000],
 	        	['MA', 5, 1000],
@@ -70,7 +93,7 @@
             	['WV', 48,13000],
             	['WI', 49,13000],
             	['WY', 50,23784]
-          ]);
+          ]);*/
 
           var options = {
         		  width: 1000, 

@@ -28,11 +28,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoizxb0FMB89793hKaM_fC1lX
 
 </head>
 <body>
- <h1>Hello you</h1>
+ 
  <input type="hidden" name="stateDetails" id="stateDetails"
 		value="<%for (State s : stList.getStatesList()) {
 				%>
-				<%=s.getName()+","+ s.getModName() + "|"%>
+				<%=s.getName()+", "+ s.getModName() +", "+ s.getTotalSites()+ "|"%>
 			<%}%>" />
 
 <form action="oauth" method="get" id="myform">

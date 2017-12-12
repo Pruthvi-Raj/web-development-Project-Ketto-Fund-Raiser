@@ -264,17 +264,7 @@ public class ConnectedAppREST extends HttpServlet {
 						String modName = results.getJSONObject(i).getString("Name");
 						String total = String.valueOf(results.getJSONObject(i).get("total"));
 						String stName = String.valueOf(results.getJSONObject(i).getString("stateName"));
-						/*String url = String.valueOf(results.getJSONObject(i).get("Website"));
-						// String address1 =
-						// String.valueOf(results.getJSONObject(i).getString("Location_City__c"));
-						String phone = String.valueOf(results.getJSONObject(i).get("Phone"));
-						String approve = String.valueOf(results.getJSONObject(i).get("Approval__c"));
-						String modelName = String.valueOf(results.getJSONObject(i).get("Models__r"));
-						String newModelName = modelName.replace("\"", "");
-						String newModelName1 = newModelName.replace("}", "");
-						String newModelName2 = newModelName1.replace("]", "");
-						String newModelName3 = newModelName2.replace("Name:", "");
-						String[] words = newModelName3.split(",");*/
+						
 
 						System.out.println(stName + " has " + modName + " and no of sites "+total );
 
@@ -282,9 +272,6 @@ public class ConnectedAppREST extends HttpServlet {
 						state.setModName(modName);
 						state.setTotalSites(total);
 						
-						// siteList.setArrayOfSite();
-
-						// siteList.setArrayOfSite();
 						writer.write(results.getJSONObject(i).get("total") + ", "
 								+ results.getJSONObject(i).getString("Name") + "\n");
 					}
@@ -400,7 +387,7 @@ public class ConnectedAppREST extends HttpServlet {
 			  System.out.println("My print statement" +
 			  stateList1.getStatesList());
 		
-		//request.setAttribute("State", s);
+		
 		request.setAttribute("StateList", stateList1);
 			  
 		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
