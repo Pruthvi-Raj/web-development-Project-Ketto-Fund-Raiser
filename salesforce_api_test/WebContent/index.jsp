@@ -9,7 +9,7 @@
 <script type="text/javascript" language="javascript" src = "map.js"></script>
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "map.css" />
-<title>Locations</title>
+<title>Locate Centering Sites</title>
 <script type="text/javascript">
       google.charts.load('current', {
         'packages':['geochart'],

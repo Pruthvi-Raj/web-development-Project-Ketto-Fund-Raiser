@@ -262,7 +262,7 @@ public class ConnectedAppREST extends HttpServlet {
 						State state = stateList.addState();
 
 						String modName = results.getJSONObject(i).getString("Name");
-						String total = String.valueOf(results.getJSONObject(i).get("total"));
+						int total = (int) results.getJSONObject(i).get("total");
 						String stName = String.valueOf(results.getJSONObject(i).getString("stateName"));
 						
 

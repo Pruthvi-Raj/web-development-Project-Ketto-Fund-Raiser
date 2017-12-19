@@ -4,7 +4,7 @@ public class State {
 
 	String name;
 	String modName;
-	String totalSites;
+	int totalSites;
 
 	public String getName() {
 		return name;
@@ -22,13 +22,23 @@ public class State {
 		this.modName = modName;
 	}
 
-	public String getTotalSites() {
+	public int getTotalSites() {
+		return totalSites;
+	}
+
+	public void setTotalSites(int totalSites) {
+		this.totalSites = totalSites;
+	}
+
+	
+	
+	/*public String getTotalSites() {
 		return totalSites;
 	}
 
 	public void setTotalSites(String totalSites) {
 		this.totalSites = totalSites;
-	}
+	}*/
 	
 	
 }

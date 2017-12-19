@@ -182,7 +182,10 @@ public class OAuthConnectedApp extends HttpServlet {
 			System.out.println("This is after setting attribute" + s.getName());
 			request.setAttribute("State", s);
 		}else{
-			request.setAttribute("State", null);
+			request.setAttribute("State", null
+					
+					
+					);
 		}
 		
 		
